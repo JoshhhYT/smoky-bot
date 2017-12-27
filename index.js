@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const TOKEN = "Mzk1MjM4OTU5NTY0OTgwMjI0.DSRO8g.Umo-5zlvWdzeIhNspa-wQLI7OV4";
 const PREFIX = "!";
 const YTDL = require("ytdl-core");
 var fortunes = [
@@ -137,4 +136,4 @@ bot.on("message", function(message){
     }
 })
 
-bot.login(TOKEN);
+bot.login(process.env.BOT_TOKEN);
