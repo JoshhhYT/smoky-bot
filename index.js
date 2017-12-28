@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const TOKEN = "Mzk1MjM4OTU5NTY0OTgwMjI0.DSRO8g.Umo-5zlvWdzeIhNspa-wQLI7OV4";
 const PREFIX = "!";
 const YTDL = require("ytdl-core");
 var fortunes = [
@@ -93,12 +92,20 @@ bot.on("message", function(message){
             break;
         case "cmds":
             message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
-            message.author.sendMessage("Here is a list of commands for the server **Smoke'd**. \n\n`cmds; DMs you this list of commands. \ncommands; DMs you this list of commands. \nhelp; Shows up a help pannel on how to use the bot. \ninfo; shows up a info pannel about Smoky Bot. \nping; Pong! \n8ball; Can't answer a life-or-death question? This command can!`")
+            var embed = new Discord.RichEmbed()
+              .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions",false)
+              .setColor(FFB2660)
+              .setFooter("Smoky Bot©")
+            message.author.sendEmbed(embed);
             break;
         case "commands":
-            message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
-            message.author.sendMessage("Here is a list of commands for the server **Smoke'd**. \n\n`cmds; DMs you this list of commands. \ncommands; DMs you this list of commands. \nhelp; Shows up a help pannel on how to use the bot. \ninfo; shows up a info pannel about Smoky Bot. \nping; Pong! \n8ball; Can't answer a life-or-death question? This command can!`")
-            break;
+        message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
+        var embed = new Discord.RichEmbed()
+          .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions",false)
+          .setColor(FFB2660)
+          .setFooter("Smoky Bot©")
+        message.author.sendEmbed(embed);
+        break;
         case "play":
             if (!args[1]) {
               message.channel.sendMessage(message.author.toString() + ", make sure to provide a valid link.");
@@ -137,4 +144,4 @@ bot.on("message", function(message){
     }
 })
 
-bot.login(TOKEN);
+bot.login(BOT_TOKEN);
