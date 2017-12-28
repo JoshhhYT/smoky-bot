@@ -32,7 +32,7 @@ function sin_to_hex(i, phase) {
 let place = 0;
 var servers = {};
 
-function play(connection, message) {
+function play(connection, message) {
   var server = servers[message.guild.id];
 
   server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
@@ -91,18 +91,18 @@ bot.on("message", function(message){
             else message.channel.sendMessage("Can't read that," + message.author.toString() + "!");
             break;
         case "cmds":
-            message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
-            var embed = new Discord.RichEmbed()
-              .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions",false)
-              .setColor(FFB2660)
-              .setFooter("Smoky Bot©")
-            message.author.sendEmbed(embed);
-            break;
+        message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
+        var embed = new Discord.RichEmbed()
+          .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
+          .setColor(849283)
+          .setFooter("Smoky Bot©")
+        message.author.sendEmbed(embed);
+        break;
         case "commands":
         message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
         var embed = new Discord.RichEmbed()
-          .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions",false)
-          .setColor(FFB2660)
+          .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
+          .setColor(849283)
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
         break;
@@ -125,7 +125,7 @@ bot.on("message", function(message){
 
             server.queue.push(args[1]);
 
-            if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+            if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
               play(connection, message);
               message.channel.sendMessage("Song has been added")
             });
@@ -143,5 +143,6 @@ bot.on("message", function(message){
             message.channel.sendMessage(message.author.toString() + ", invalid command! Say `!cmds` or `!commands` to view a list of commands")
     }
 })
+
 
 bot.login(process.env.BOT_TOKEN);
