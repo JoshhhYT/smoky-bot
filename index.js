@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const TOKEN = "Mzk1MjM4OTU5NTY0OTgwMjI0.DSRO8g.Umo-5zlvWdzeIhNspa-wQLI7OV4";
 const PREFIX = "!";
 const YTDL = require("ytdl-core");
 var fortunes = [
@@ -47,8 +48,8 @@ function play(connection, message) {
 
 function changeColor() {
   for (let index = 0; index < 1; ++index) {		
-    bot.guilds.get([395216948469694466]).roles.find('name', "Vice Chairman").setColor(rainbow[place])
-    bot.guilds.get([395216948469694466]).roles.find('name', "Chairman").setColor(rainbow[place])
+    bot.guilds.get("395216948469694466").roles.find('name', "Vice Chairman").setColor(rainbow[place])
+    bot.guilds.get("395216948469694466").roles.find('name', "Chairman").setColor(rainbow[place])
 		.catch(console.error);
 		
     if(place == (size - 1)){
@@ -136,4 +137,4 @@ bot.on("message", function(message){
     }
 })
 
-bot.login(process.env.BOT_TOKEN);
+bot.login(TOKEN);
