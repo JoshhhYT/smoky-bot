@@ -116,7 +116,7 @@ bot.on("message", function(message){
           message.channel.sendMessage("The user has been kicked from **Smoke'd**.");
         } else {
           return message.reply(" make sure to provide an user!");
-        }} else { message.reply(" you dont have the permission to ban members.")
+        }} else { message.reply(" you dont have the permission to kick members.")
         }
         break;
       	case "ban":
