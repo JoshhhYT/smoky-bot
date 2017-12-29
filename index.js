@@ -106,43 +106,19 @@ bot.on("message", function(message){
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
         break;
-        case "play":
-            if (!args[1]) {
-              message.channel.sendMessage(message.author.toString() + ", make sure to provide a valid link.");
-              return;
-            }
-
-            if (!message.member.voiceChannel) {
-              message.channel.sendMessage(message.author.toString() + ", you must be in a voice channel to operate this command.");
-              return;
-            }
-
-            if (!servers[message.guild.id]) servers[message.guild.id] = {
-              queue: []
-            };
-            
-            var server = servers[message.guild.id];
-
-            server.queue.push(args[1]);
-
-            if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-              play(connection, message);
-              message.channel.sendMessage("Song has been added")
-            });
-            break;
-        case "skip":
-            var server = servers[message.guild.id];
-            if (server.dispatcher) server.dispatcher.end();
-            break;
-        case "stop":
-            var server = servers[message.guild.id];
-
-            if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-            break;
+        case "kick":
+        let Admin = message.guild.roles.find("name", "Admin");
+        if(message.member.roles.has(Admin.id)) { 
+          let kickMember = message.guild.member(message.mentions.users.first());
+          message.guild.member(kickMember).kick();
+          message.channel.sendMessage("Member Kicked.");
+        } else {
+          return message.reply("You dont have the permission to kick members.");
+        }
+        break;
         default:
             message.channel.sendMessage(message.author.toString() + ", invalid command! Say `!cmds` or `!commands` to view a list of commands")
     }
 })
-
 
 bot.login(process.env.BOT_TOKEN);
