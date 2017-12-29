@@ -75,7 +75,7 @@ bot.on("message", function(message){
     if (!message.content.startsWith(PREFIX)) return;
 
     var args = message.content.substring(PREFIX.length).split(" ");
-
+    let Admin = message.guild.roles.find("name", "Admin");
     switch (args[0].toLowerCase()) {
         case "ping":
             message.channel.sendMessage("Pong!");
@@ -109,7 +109,6 @@ bot.on("message", function(message){
         message.author.sendEmbed(embed);
         break;
         case "kick":
-        let Admin = message.guild.roles.find("name", "Admin");
         if(message.member.roles.has(Admin.id)) { 
           let kickMember = message.guild.member(message.mentions.users.first());
           message.guild.member(kickMember).kick();
@@ -118,8 +117,7 @@ bot.on("message", function(message){
           return message.reply(message.author.toString() + ", you dont have the permission to kick members.");
         }
         break;
-	case "ban":
-        let Admin = message.guild.roles.find("name", "Admin");
+      	case "ban":
         if(message.member.roles.has(Admin.id)) { 
           let banMember = message.guild.member(message.mentions.users.first());
           message.guild.member(banMember).ban();
