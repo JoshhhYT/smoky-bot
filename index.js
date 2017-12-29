@@ -94,7 +94,7 @@ bot.on("message", function(message){
         message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
         var embed = new Discord.RichEmbed()
           .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
-          .addField("Administration Commands", "!kick - Kicks a player from the server.", true)
+          .addField("Administration Commands", "!ban - Bans a player from the server\n!kick - Kicks a player from the server", true)
 	  .setColor(849283)
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
@@ -103,7 +103,7 @@ bot.on("message", function(message){
         message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
         var embed = new Discord.RichEmbed()
           .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
-	  .addField("Administration Commands", "!kick - Kicks a player from the server.", true)
+          .addField("Administration Commands", "!ban - Bans a player from the server\n!kick - Kicks a player from the server", true)
           .setColor(849283)
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
@@ -113,9 +113,19 @@ bot.on("message", function(message){
         if(message.member.roles.has(Admin.id)) { 
           let kickMember = message.guild.member(message.mentions.users.first());
           message.guild.member(kickMember).kick();
-          message.channel.sendMessage("Member Kicked.");
+          message.channel.sendMessage("The user has been kicked from **Smoke'd**.");
         } else {
-          return message.reply("You dont have the permission to kick members.");
+          return message.reply(message.author.toString() + ", you dont have the permission to kick members.");
+        }
+        break;
+	case "ban":
+        let Admin = message.guild.roles.find("name", "Admin");
+        if(message.member.roles.has(Admin.id)) { 
+          let banMember = message.guild.member(message.mentions.users.first());
+          message.guild.member(banMember).ban();
+          message.channel.sendMessage("The user has been banned from **Smoke'd**.");
+        } else {
+          return message.reply(message.author.toString() + ", you dont have the permission to ban members.");
         }
         break;
         default:
