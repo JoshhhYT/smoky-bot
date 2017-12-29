@@ -115,8 +115,8 @@ bot.on("message", function(message){
           message.guild.member(kickMember).kick();
           message.channel.sendMessage("The user has been kicked from **Smoke'd**.");
         } else {
-          return message.reply(" you dont have the permission to ban members.");
-        }} else { message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+          return message.reply(" make sure to provide an user!");
+        }} else { message.reply(" you dont have the permission to ban members.")
         }
         break;
       	case "ban":
@@ -126,8 +126,8 @@ bot.on("message", function(message){
           message.guild.member(banMember).ban();
           message.channel.sendMessage("The user has been banned from **Smoke'd**.");
         } else {
-          return message.reply(" you dont have the permission to ban members.");
-        } } else {message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+          return message.reply(" make sure to provide an user!");
+        }} else { message.reply(" you dont have the permission to ban members.")
         }
         break;
         default:
