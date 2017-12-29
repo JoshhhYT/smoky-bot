@@ -94,7 +94,8 @@ bot.on("message", function(message){
         message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
         var embed = new Discord.RichEmbed()
           .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
-          .setColor(849283)
+          .addField("Administration Commands", "!kick - Kicks a player from the server.", true)
+	  .setColor(849283)
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
         break;
@@ -102,6 +103,7 @@ bot.on("message", function(message){
         message.channel.sendMessage(message.author.toString() + ", I DMed you a list of commands!")
         var embed = new Discord.RichEmbed()
           .addField("Public Commands", "!cmds - Sends this message\n!commands - Sends this message\n!help - Shows up a help pannel\n!info - Shows up an info pannel about Smoky Bot\n!ping - Pong!\n!8ball - Answers life-or-death questions", true)
+	  .addField("Administration Commands", "!kick - Kicks a player from the server.", true)
           .setColor(849283)
           .setFooter("Smoky Bot©")
         message.author.sendEmbed(embed);
