@@ -115,8 +115,9 @@ bot.on("message", function(message){
           message.guild.member(kickMember).kick();
           message.channel.sendMessage("The user has been kicked from **Smoke'd**.");
         } else {
-          return message.reply(message.author.toString() + ", you dont have the permission to ban members.");
-        }} else message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+          return message.reply(" you dont have the permission to ban members.");
+        }} else { message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+        }
         break;
       	case "ban":
         if(message.member.roles.has(Admin.id)) {
@@ -125,8 +126,9 @@ bot.on("message", function(message){
           message.guild.member(banMember).ban();
           message.channel.sendMessage("The user has been banned from **Smoke'd**.");
         } else {
-          return message.reply(message.author.toString() + ", you dont have the permission to ban members.");
-        }} else message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+          return message.reply(" you dont have the permission to ban members.");
+        } } else {message.channel.sendMessage(message.author.toString() + ", make sure to provide an user!")
+        }
         break;
         default:
             message.channel.sendMessage(message.author.toString() + ", invalid command! Say `!cmds` or `!commands` to view a list of commands")
